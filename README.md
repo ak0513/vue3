@@ -66,9 +66,10 @@ npm run build
 ## 미리보기
 npm run preview
 
+## 배포
+npm run deploy
 
-# 모바일 연동 테스트 시 노트북은 안됨
-## serve install
-npm install -g serve
-## 실행
-serve -s dist
+## 기존 gh-pages 브랜치의 내용을 완전히 덮어씌우기
+### npm run deploy 대신 사용
+- ㅁㅁㅁㅁ
+npx gh-pages -d dist --dotfiles --branch gh-pages --message "rebuild with correct base"
