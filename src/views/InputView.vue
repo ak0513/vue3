@@ -4,7 +4,7 @@
 		<Section>
 			<h2 class="h_tit2">형태</h2>
 			<Box>
-				<div class="form">
+				<Form @submit="onSubmit">
 					<Input 
 						v-model="form.username" 
 						id="user" 
@@ -71,7 +71,7 @@
 						<Input v-model="form.address" placeholder="기본주소" />
 						<Input v-model="form.detailAddress" placeholder="상세주소" />
 					</InputGroup>
-				</div>
+				</Form>
 			</Box>
 
 
@@ -85,11 +85,8 @@
 </template>
 
 <script setup>
-import DefaultLayout from '@/layouts/DefaultLayout.vue'
-import Section from '@/layouts/Section.vue'
-import SectionTitle from '@/components/SectionTitle.vue'
 import Box from '@/components/Box.vue'
-import { InputGroup, Input, Button } from '@/components/form'
+import { Form, InputGroup, Input } from '@/components/form'
 
 import { reactive } from 'vue'
 
@@ -129,6 +126,10 @@ function validateEmail() {
 function searchPostcode() {
   console.log('우편번호 검색 실행')
   // ex) API 호출 가능
+}
+
+function onSubmit() {
+  console.log('폼 제출', form)
 }
 </script>
 

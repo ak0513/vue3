@@ -15,9 +15,6 @@
 </template>
 
 <script setup>
-import DefaultLayout from '@/layouts/DefaultLayout.vue'
-import Section from '@/layouts/Section.vue'
-import SectionTitle from '@/components/SectionTitle.vue'
 import Icon from '@/components/Icon.vue'
 // import Box from '@/components/Box.vue'
 

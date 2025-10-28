@@ -19,7 +19,6 @@
 
 <script setup>
 import { ref, computed  } from 'vue'
-import { Button } from '@/components/form'
 
 const props = defineProps({
 	label: { type: String, default: '' },

@@ -19,7 +19,6 @@
 
 <script setup>
 import { ref } from 'vue';
-import DefaultLayout from '@/layouts/DefaultLayout.vue'
 import Modal from '@/components/Modal.vue';
 
 const modal1 = ref(null);

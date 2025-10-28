@@ -25,7 +25,6 @@
  */
 
 import { ref, computed } from 'vue'
-import { Button } from '@/components/form'
 
 // -------------------------
 // 1️⃣ Props 정의

@@ -143,11 +143,7 @@
 </template>
 
 <script setup>
-import DefaultLayout from '@/layouts/DefaultLayout.vue'
-import Section from '@/layouts/Section.vue'
-import SectionTitle from '@/components/SectionTitle.vue'
 import Box from '@/components/Box.vue'
-import { Button, ButtonWrap } from '@/components/form'
 
 import { ref, computed  } from 'vue';
 
