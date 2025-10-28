@@ -1,20 +1,17 @@
 <template>
 	<div class="form_item">
-		<!-- 라벨 -->
-		<label v-if="label" :for="id" class="form_label">{{ label }}</label>
+		<label :for="id" class="form_label">{{ label }}</label>
 
-		<!-- input wrapper -->
 		<div ref="wrapperRef" class="form_input" :class="{ 'is-error': error, focused: focused }"
 			@focusin="focused = true" @focusout="checkFocusOut">
-			<input ref="inputRef" v-bind="inputAttrs" :value="modelValue" :class="inputClass" @input="updateValue" />
+			<input ref="inputRef" v-bind="inputAttrs" :value="modelValue" :class="inputClass"
+				@input="updateValue" />
 			<button v-if="showReset" type="button" class="btn_input_reset" :class="{ visible: modelValue }"
 				@click="resetInput"></button>
 			<span v-if="unit" class="unit">{{ unit }}</span>
-			<!-- 개별 동작 버튼 -->
 			<Button v-if="actionLabel && actionHandler" :label="actionLabel" size="sm" @click="actionHandler" />
 		</div>
-		
-		<!-- 에러 메시지 -->
+
 		<p v-if="error" class="form_info">{{ error }}</p>
 	</div>
 </template>
@@ -28,7 +25,7 @@
  */
 
 import { ref, computed } from 'vue'
-import Button from '@/components/Button.vue'
+import { Button } from '@/components/form'
 
 // -------------------------
 // 1️⃣ Props 정의
@@ -38,6 +35,7 @@ const props = defineProps({
 	label: { type: String, default: '' },
 	type: { type: String, default: 'text' },
 	id: { type: String, default: '' },
+	name: { type: String, default: '' },
 	textAlign: { type: String, validator: val => ['right'].includes(val) }, // 기본: left
 	placeholder: { type: String, default: '' },
 	disabled: { type: Boolean, default: false },
@@ -62,16 +60,17 @@ const wrapperRef = ref(null)
 const focused = ref(false)
 
 // -------------------------
-// 4️⃣ Computed 정의
+// Computed 정의
 // -------------------------
+
 // input HTML 속성
 const inputAttrs = computed(() => ({
 	type: props.type,
-	id: props.id,
+	id: props.id || undefined,       // ''이면 undefined → DOM에 아예 안붙음
+	name: props.name,
 	placeholder: props.placeholder,
 	disabled: props.disabled,
 	readonly: props.readonly,
-	class: 'form_control',
 }))
 
 // text-align 클래스 (right만 지원, left는 기본)

@@ -65,3 +65,10 @@ npm run build
 
 ## 미리보기
 npm run preview
+
+
+# 모바일 연동 테스트 시 노트북은 안됨
+## serve install
+npm install -g serve
+## 실행
+serve -s dist

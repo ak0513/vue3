@@ -147,8 +147,7 @@ import DefaultLayout from '@/layouts/DefaultLayout.vue'
 import Section from '@/layouts/Section.vue'
 import SectionTitle from '@/components/SectionTitle.vue'
 import Box from '@/components/Box.vue'
-import ButtonWrap from '@/components/ButtonWrap.vue'
-import Button from '@/components/Button.vue'
+import { Button, ButtonWrap } from '@/components/form'
 
 import { ref, computed  } from 'vue';
 
