@@ -6,6 +6,7 @@ import path from 'path'
 
 // https://vite.dev/config/
 export default defineConfig({
+	base: '/vue3/', // ⚠️ 꼭 본인 저장소 이름으로 변경!
 	plugins: [
 		vue(),
 		svgLoader({
