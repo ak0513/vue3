@@ -177,7 +177,7 @@ input:not([type="checkbox"]):not([type="radio"])::placeholder {
 	flex-shrink: 0;
 	width: 4.0rem;
 	height: 100%;
-	background: url('../assets/icons/btn_close.svg') no-repeat center / 2.0rem;
+	background: url('@/assets/icons/btn_close.svg') no-repeat center / 2.0rem;
 }
 
 .btn_input_reset.visible {
