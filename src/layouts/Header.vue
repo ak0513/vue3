@@ -6,7 +6,7 @@
 			<router-link to="/ui">Ui</router-link> |
 			<router-link to="/router">router</router-link> |
 			<router-link to="/button">button</router-link> |
-			<router-link to="/input">input</router-link> |
+			<router-link to="/form">form</router-link> |
 		</nav>
 	</header>
 </template>

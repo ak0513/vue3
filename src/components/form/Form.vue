@@ -17,93 +17,51 @@ function handleSubmit(event) {
 }
 </script>
 
-<style scoped>
-.form {
-	margin-top: var(--spacing_xs)
-}
-
-.form .form_label {
+<style>
+.form_label {
 	display: flex;
 	align-items: center;
-	font-size:1.4rem;
-	color: var(--black);
+	font-size: 1.4rem;
+	color: var(--gray900);
 }
 
-.form .form_info {
+.form_info {
 	margin-top:0.8rem;
 	font-size: 1.4rem;
 }
 
-.form .form_txt {
-	margin-top: var(--form-label-margin);
-	color:var(--dark);
-}
-
-.form .form_tip {
-	margin-top: var(--form-label-margin);
+.form_error {
+	color: var(--danger);
 	font-size: 1.4rem;
-	color:var(--gray);
 }
 
-.form .form_item {
-	position: relative;
-}
 
-.form * + .form_item {
+.form > .form_item + .form_item,
+.form > .form_item + .form_group,
+.form > .form_group + .form_group,
+.form > .form_group + .form_item {
 	margin-top: var(--form-item-margin);
 }
 
-.form .form_item .row {
-	margin-left: calc(var(--gutter8) * -1);
-	margin-right: calc(var(--gutter8) * -1);
-}
 
-.form .form_item .row > [class^="col"] {
-	padding-left: var(--gutter8);
-	padding-right: var(--gutter8);
-}
-
-.form .form_item .form_label + .form_input,
-.form .form_item .form_label + .row {
-	margin-top: var(--form-label-margin);
-}
-
-.form .form_item [class^="col"] > .form_input:only-child {
-	margin-top: 0;
-}
-
-
-.form .form_item_inline {
+/* 폼 레이아웃 */
+.form .layout_colume {
 	display: flex;
-	align-items: center;
+	flex-direction: column;
+	gap: var(--gap_md);
 }
 
-.form .form_item_inline .form_label {
-	margin-right: 1.6rem;
+.form .layout_row {
+	display: flex;
+	gap: var(--gap_md);
 }
 
-.form .form_item_inline .form_input,
-.form .form_item_inline .form_check,
-.form .form_item_inline .form_check {
-	margin-top: 0;
+.form .layout_row .form_item {
+	flex: 1;
 }
 
-.form .form_item_inline [class*='wrap'],
-.form .form_item_inline .form_group,
-.form .form_item_inline .row {
-	flex-grow: 1;
-}
-
-.form > .form_group + .btn_wrap,
-.form > .form_item + .btn_wrap {
-	margin-top: 5.0rem;
-}
-
-.form > .form_item + .form_tit {
-	margin-top: 8.0rem;
-}
-
-.form .form_group > * + * {
-	margin-top: 0.4rem;
+.form .form_label + .type_checkbox,
+.form .form_label + .type_radio {
+	margin-top: 1.2rem;
 }
 </style>

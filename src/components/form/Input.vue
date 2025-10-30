@@ -1,18 +1,19 @@
 <template>
 	<div class="form_item">
-		<label :for="id" class="form_label">{{ label }}</label>
+		<label v-if="label" :for="id" class="form_label">{{ label }}</label>
 
 		<div ref="wrapperRef" class="form_input" :class="{ 'is-error': error, focused: focused }"
 			@focusin="focused = true" @focusout="checkFocusOut">
-			<input ref="inputRef" v-bind="inputAttrs" :value="modelValue" :class="inputClass"
-				@input="updateValue" />
+			<input ref="inputRef" v-bind="{ ...inputAttrs, ...$attrs }" :value="modelValue" :class="inputClass"
+				@input="updateValue" autocomplete="off" />
 			<button v-if="showReset" type="button" class="btn_input_reset" :class="{ visible: modelValue }"
 				@click="resetInput"></button>
 			<span v-if="unit" class="unit">{{ unit }}</span>
 			<Button v-if="actionLabel && actionHandler" :label="actionLabel" size="sm" @click="actionHandler" />
 		</div>
 
-		<p v-if="error" class="form_info">{{ error }}</p>
+		<p v-if="info" class="form_info">{{ info }}</p>
+		<p v-if="error" class="form_error">{{ error }}</p>
 	</div>
 </template>
 
@@ -34,12 +35,13 @@ const props = defineProps({
 	label: { type: String, default: '' },
 	type: { type: String, default: 'text' },
 	id: { type: String, default: '' },
-	name: { type: String, default: '' },
+	// name: { type: String, default: '' },
 	textAlign: { type: String, validator: val => ['right'].includes(val) }, // 기본: left
-	placeholder: { type: String, default: '' },
+	// placeholder: { type: String, default: '' },
 	disabled: { type: Boolean, default: false },
 	readonly: { type: Boolean, default: false },
 	error: { type: String, default: '' },
+	info: { type: String, default: '' },
 	unit: { type: String, default: '' },
 	showReset: { type: Boolean, default: true }, // 삭제 버튼 표시 여부
 	actionLabel: { type: String, default: '' },  // 개별 버튼 라벨
@@ -66,8 +68,8 @@ const focused = ref(false)
 const inputAttrs = computed(() => ({
 	type: props.type,
 	id: props.id || undefined,       // ''이면 undefined → DOM에 아예 안붙음
-	name: props.name,
-	placeholder: props.placeholder,
+	// name: props.name || undefined,
+	// placeholder: props.placeholder || undefined,
 	disabled: props.disabled,
 	readonly: props.readonly,
 }))
@@ -116,21 +118,14 @@ input:not([type="checkbox"]):not([type="radio"]) {
 	padding: var(--form-ele-padding-y) 0;
 	background-color: transparent;
 	border: none;
-	color: var(--black);
+	color: var(--gray900);
 	font-size: var(--form-ele-font);
 	line-height: var(--form-ele-line-height);
 }
 
 input:not([type="checkbox"]):not([type="radio"])::placeholder {
 	font-size: var(--form-ele-font);
-	color: var(--mediumgray);
-}
-
-.form_label {
-	display: flex;
-	align-items: center;
-	font-size: 1.4rem;
-	color: var(--black);
+	color: var(--gray600);
 }
 
 .form_input {

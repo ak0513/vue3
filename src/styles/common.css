@@ -24,7 +24,7 @@
 
 	--font-basic: 1.6rem;
 
-	--line-height: 1.45;
+	--line-height: 1.6;
 
 	/* gutter */
 	--gutter4: 0.2rem;
@@ -62,7 +62,7 @@
 	--box-shadow: 0 0.2rem 0.2rem 0 rgba(14, 34, 56, .07);
 
 	/* form item */
-	--form-item-margin: 2.0rem;
+	--form-item-margin: 3.2rem;
 
 	/* form element */
 	--form-ele-font: 1.6rem;
@@ -169,8 +169,12 @@ button {
 
 html,
 body,
-#app {
-	height: 100%;
+#app,
+#container,
+.sections {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
 }
 
 html {
@@ -180,7 +184,7 @@ html {
 body {
 	font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 	color: var(--gray900);
-	line-height: 1.4;
+	line-height: var(--line-height);
 	font-size: var(--font-basic);
 }
 

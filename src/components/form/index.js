@@ -1,9 +1,13 @@
-import Form from './Form.vue'
-import Input from './Input.vue'
-import InputGroup from './InputGroup.vue'
+import Form from '@/components/form/Form.vue'
+import Input from '@/components/form/Input.vue'
+import CheckRadio from '@/components/form/CheckRadio.vue'
+import CheckRadioGroup from '@/components/form/CheckRadioGroup.vue'
+import FormGroup from '@/components/form/FormGroup.vue'
 
 export {
 	Form,
 	Input,
-	InputGroup
+	CheckRadio,
+	CheckRadioGroup,
+	FormGroup
 }

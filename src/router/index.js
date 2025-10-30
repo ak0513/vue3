@@ -4,7 +4,7 @@ import ModalView from '@/views/ModalView.vue'
 import UiView from '@/views/UiView.vue'
 import routerView from '@/views/routerView.vue'
 import buttonView from '@/views/ButtonView.vue'
-import inputView from '@/views/InputView.vue'
+import formView from '@/views/FormView.vue'
 
 const routes = [
 	{
@@ -33,15 +33,15 @@ const routes = [
 		component: buttonView,
 	},
 	{
-		path: '/input',
-		name: 'input',
-		component: inputView,
+		path: '/form',
+		name: 'form',
+		component: formView,
 	},
 ]
 
 const router = createRouter({
 	// history: createWebHashHistory(), // 해시 모드
-	history: createWebHistory(), // 히스토리 모드 (URL에 # 안 붙음)
+	history: createWebHistory('/vue3/'), // 히스토리 모드 (URL에 # 안 붙음)
 	routes,
 })
 
