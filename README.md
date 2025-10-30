@@ -70,6 +70,5 @@ npm run preview
 npm run deploy
 
 ## 기존 gh-pages 브랜치의 내용을 완전히 덮어씌우기
-### npm run deploy 대신 사용
-- ㅁㅁㅁㅁ
+- npm run deploy 대신 사용
 - npx gh-pages -d dist --dotfiles --branch gh-pages --message "rebuild with correct base"

@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
 import ModalView from '@/views/ModalView.vue'
 import UiView from '@/views/UiView.vue'
@@ -40,7 +40,8 @@ const routes = [
 ]
 
 const router = createRouter({
-	history: createWebHashHistory(), // 히스토리 모드 (URL에 # 안 붙음)
+	// history: createWebHashHistory(), // 해시 모드
+	history: createWebHistory(), // 히스토리 모드 (URL에 # 안 붙음)
 	routes,
 })
 
