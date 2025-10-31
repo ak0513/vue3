@@ -75,7 +75,7 @@
 					</FormGroup>
 
 					<!-- 체크박스 디자인 -->
-					<FormGroup type="checkbox" label="체크박스 디자인" customClass="check_btn" labelAs="div">
+					<FormGroup type="checkbox" label="체크박스 디자인" layout="row" labelAs="div" customClass="check_btn">
 						<CheckRadio v-model="checkbox5" id="check4_1" label="체크박스1" />
 						<CheckRadio v-model="checkbox6" id="check4_2" label="체크박스2" />
 					</FormGroup>
@@ -86,25 +86,25 @@
 			<Box>
 				<Form>
 					<FormGroup>
-						<CheckRadio v-model="singleRadio" type="radio" id="radio1_1" label="라디오버튼 혼자" />
+						<CheckRadio v-model="singleRadio" type="radio" id="radio1_1" name="radio" label="라디오버튼 혼자" />
 					</FormGroup>
 
 					<!-- 라디오버튼 + 레이블(가로) -->
-					<FormGroup type="radiobox" layout="row" label="라디오버튼 + 레이블(가로)" labelAs="div">
-						<CheckRadio v-model="radio1" type="radio" id="radio2_1" label="라디오버튼1" />
-						<CheckRadio v-model="radio2" type="radio" id="radio2_2" label="라디오버튼2" />
+					<FormGroup type="radio" layout="row" label="라디오버튼 + 레이블(가로)" labelAs="div">
+						<CheckRadio v-model="radio1" type="radio" id="radio2_1" name="radio2" label="라디오버튼1" />
+						<CheckRadio v-model="radio2" type="radio" id="radio2_2" name="radio2" label="라디오버튼2" />
 					</FormGroup>
 
 					<!-- 라디오버튼 + 레이블(세로) -->
-					<FormGroup type="radiobox" label="라디오버튼 + 레이블(세로)" labelAs="div">
-						<CheckRadio v-model="radio3" type="radio" id="radio3_1" label="라디오버튼1" />
-						<CheckRadio v-model="radio4" type="radio" id="radio3_2" label="라디오버튼2" />
+					<FormGroup type="radio" label="라디오버튼 + 레이블(세로)" labelAs="div">
+						<CheckRadio v-model="radio3" type="radio" id="radio3_1" name="radio3" label="라디오버튼1" />
+						<CheckRadio v-model="radio4" type="radio" id="radio3_2" name="radio3" label="라디오버튼2" />
 					</FormGroup>
 
 					<!-- 라디오버튼 디자인 -->
-					<FormGroup type="radiobox" label="라디오버튼 디자인" labelAs="div">
-						<CheckRadio v-model="radio5" type="radio" id="radio4_1" label="라디오버튼1 " />
-						<CheckRadio v-model="radio6" type="radio" id="radio4_2" label="라디오버튼2" />
+					<FormGroup type="radio" label="라디오버튼 디자인" layout="row" labelAs="div" customClass="check_btn">
+						<CheckRadio v-model="radio5" type="radio" id="radio4_1" name="radio4" label="라디오버튼1 " />
+						<CheckRadio v-model="radio6" type="radio" id="radio4_2" name="radio4" label="라디오버튼2" />
 					</FormGroup>
 				</Form>
 			</Box>

@@ -1,9 +1,9 @@
 <template>
 	<div :class="checkClass">
 		<label v-if="label" class="form_check_label">
-			<input :type="type" class="form_check_input" :id="id" :name="name" :checked="modelValue"
-				@change="updateValue" />
+			<input :type="type" class="form_check_input" :id="id" :name="name" :checked="modelValue" @change="updateValue" />
 			<span class="form_check_txt">{{ label }}</span>
+			<!-- <Icon iconName="checkbox.svg" /> -->
 		</label>
 
 		<!-- label 없는 단독 checkbox/radio -->
@@ -15,8 +15,10 @@
 <script setup>
 import { computed } from 'vue'
 
+import Icon from '@/components/Icon.vue'
+
 const props = defineProps({
-	modelValue: { type: Boolean, default: false },
+	modelValue: { type: [Boolean, String], default: false },
 	type: { type: String, default: 'checkbox' }, // 'checkbox' 또는 'radio'
 	id: { type: String, default: '' },
 	label: { type: String, default: '' },
@@ -34,7 +36,11 @@ const emit = defineEmits(['update:modelValue'])
 // -------------------------
 // v-model 업데이트
 function updateValue(event) {
-	emit('update:modelValue', event.target.value)
+	if (props.type === 'checkbox') {
+		emit('update:modelValue', event.target.checked) // Boolean
+	} else if (props.type === 'radio') {
+		emit('update:modelValue', event.target.value)   // String
+	}
 }
 
 const checkClass = computed(() => {
@@ -51,7 +57,7 @@ const checkClass = computed(() => {
 }
 
 .form_check {
-	display:flex;
+	display: flex;
 	position: relative;
 	align-items: center;
 }
@@ -68,7 +74,7 @@ const checkClass = computed(() => {
 	line-height: 1.4;
 }
 
-.form_check_input + .form_check_txt {
+.form_check_input+.form_check_txt {
 	margin-left: 0.8rem;
 }
 
@@ -78,7 +84,7 @@ const checkClass = computed(() => {
 	flex-shrink: 0;
 	width: 2.0rem;
 	height: 2.0rem;
-	border:1px solid var(--form-ele-border-color);
+	border: 1px solid var(--form-ele-border-color);
 	border-radius: 0.2rem;
 	appearance: none;
 	-webkit-appearance: none;
@@ -87,7 +93,7 @@ const checkClass = computed(() => {
 }
 
 .form_check_input:checked {
-	border-color:var(--primary);
+	border-color: var(--primary);
 }
 
 .form_check_input:focus-visible {
@@ -109,14 +115,10 @@ body.mobile .form_check_input:focus-visible {
 }
 
 .form_check_input[type='radio']:checked {
-	background:#0d6efd url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='%23fff'/%3e%3c/svg%3e") no-repeat center;
+	background: #0d6efd url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='%23fff'/%3e%3c/svg%3e") no-repeat center;
 }
 
-.form_check.check_btn .form_check_label {
-	padding: var(--form-ele-padding-y) var(--form-ele-padding-x);
-}
-
-.form_check.check_btn .form_check_input {
+.check_btn .form_check_input {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -129,12 +131,18 @@ body.mobile .form_check_input:focus-visible {
 	border-radius: var(--form-ele-radius);
 }
 
-.form_check.check_btn .form_check_label {
+.check_btn .form_check_txt {
+	position: relative;
+	margin: 0;
+}
+
+.check_btn .form_check_label {
+	padding: var(--form-ele-padding-y) var(--form-ele-padding-x);
 	padding-right: 4.0rem
 }
 
-.form_check.check_btn .form_check_label::after {
-	content:'';
+.check_btn .form_check_input::after {
+	content: '';
 	display: block;
 	position: absolute;
 	top: 50%;
@@ -145,7 +153,17 @@ body.mobile .form_check_input:focus-visible {
 	transform: translateY(-50%);
 }
 
-.form_check.check_btn .form_check_input:checked {
+.check_btn .form_check_input:checked {
+	background: none;
+	background-color: var(--primary);
 	border-width: 2px;
+}
+
+.check_btn .form_check_input:checked::after {
+	background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e") no-repeat center;
+}
+
+.check_btn .form_check_input:checked+.form_check_txt {
+	color: var(--white);
 }
 </style>

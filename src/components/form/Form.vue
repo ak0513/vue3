@@ -45,7 +45,7 @@ function handleSubmit(event) {
 
 
 /* 폼 레이아웃 */
-.form .layout_colume {
+.form .layout_column {
 	display: flex;
 	flex-direction: column;
 	gap: var(--gap_md);

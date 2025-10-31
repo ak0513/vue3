@@ -3,10 +3,10 @@
 	✅ SVG일 경우: 파일 내용을 HTML로 직접 삽입 (v-html)
 	✅ 비SVG일 경우: 일반 <img> 태그로 렌더링
 	-->
-	<span v-if="isSvg" v-html="imgContent" :class="iconClass"></span>
-	<span v-else :class="iconClass">
+	<i v-if="isSvg" v-html="imgContent" :class="iconClass"></i>
+	<i v-else :class="iconClass">
 		<img :src="imgContent" :alt="props.iconAlt" />
-	</span>
+	</i>
 </template>
 
 <script setup>
