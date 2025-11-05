@@ -15,8 +15,6 @@
 <script setup>
 import { computed } from 'vue'
 
-import Icon from '@/components/Icon.vue'
-
 const props = defineProps({
 	modelValue: { type: [Boolean, String], default: false },
 	type: { type: String, default: 'checkbox' }, // 'checkbox' 또는 'radio'

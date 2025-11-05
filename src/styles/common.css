@@ -88,6 +88,9 @@
 	/* form label */
 	--form-label-margin: 0.8rem;
 
+	/* form message */
+	--form-message-font : var(--form-ele-font-sm);
+
 }
 
 * {

@@ -69,6 +69,10 @@ npm run preview
 ## 배포
 npm run deploy
 
+## 404.html에 index.html 내용 복사
+
+## gh-page로 브랜치로 배포
+npx gh-pages -d dist
+
 ## 기존 gh-pages 브랜치의 내용을 완전히 덮어씌우기
-- npm run deploy 대신 사용
-- npx gh-pages -d dist --dotfiles --branch gh-pages --message "rebuild with correct base"
+npx gh-pages -d dist --dotfiles --branch gh-pages --message "rebuild with correct base"

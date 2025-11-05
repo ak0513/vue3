@@ -25,14 +25,35 @@ function handleSubmit(event) {
 	color: var(--gray900);
 }
 
-.form_info {
+.form_message {
+	display: flex;
+	justify-content: space-between;
+	margin-top: var(--spacing_xs);
+}
+
+.form_hint {
 	margin-top:0.8rem;
-	font-size: 1.4rem;
+	font-size: var(--form-message-font);
 }
 
 .form_error {
 	color: var(--danger);
-	font-size: 1.4rem;
+	font-size: var(--form-message-font);
+}
+
+.form_counter {
+	display: flex;
+	gap: 0.4rem;
+	font-size: var(--form-message-font);
+}
+
+.form_hint:first-child,
+.form_error:first-child {
+	margin-top: 0;
+}
+
+.form_texts > p + p {
+	margin-top: 0.2rem;
 }
 
 
@@ -62,6 +83,6 @@ function handleSubmit(event) {
 
 .form .form_label + .type_checkbox,
 .form .form_label + .type_radio {
-	margin-top: 1.2rem;
+	margin-top: var(--spacing_xs);
 }
 </style>

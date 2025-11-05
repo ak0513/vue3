@@ -1,19 +1,36 @@
 <template>
-	<div class="form_item">
+	<div :class="['form_item', { 'is_error': error, 'is_disabled': disabled }]">
 		<label v-if="label" :for="id" class="form_label">{{ label }}</label>
-
-		<div ref="wrapperRef" class="form_input" :class="{ 'is-error': error, focused: focused }"
-			@focusin="focused = true" @focusout="checkFocusOut">
-			<input ref="inputRef" v-bind="{ ...inputAttrs, ...$attrs }" :value="modelValue" :class="inputClass"
-				@input="updateValue" autocomplete="off" />
-			<button v-if="showReset" type="button" class="btn_input_reset" :class="{ visible: modelValue }"
-				@click="resetInput"></button>
+		<div 
+			ref="wrapperRef" 
+			class="form_input" 
+			:class="{ 'is_error': error, focused: focused }"
+			@focusin="focused = true" 
+			@focusout="checkFocusOut"
+		>
+			<input 
+				ref="inputRef" 
+				v-bind="{ ...inputAttrs, ...$attrs }" 
+				:value="modelValue" 
+				:class="inputClass"
+				@input="updateValue" 
+				autocomplete="off" 
+			/>
+			<button 
+				v-if="showReset" 
+				type="button" 
+				class="btn_input_reset" 
+				:class="{ visible: modelValue }"
+				@click="resetInput"
+			></button>
 			<span v-if="unit" class="unit">{{ unit }}</span>
 			<Button v-if="actionLabel && actionHandler" :label="actionLabel" size="sm" @click="actionHandler" />
 		</div>
 
-		<p v-if="info" class="form_info">{{ info }}</p>
-		<p v-if="error" class="form_error">{{ error }}</p>
+		<div class="form_message" v-if="hint || error">
+			<p v-if="hint" class="form_hint">{{ hint }}</p>
+			<p v-if="error" class="form_error">{{ error }}</p>
+		</div>
 	</div>
 </template>
 
@@ -41,7 +58,7 @@ const props = defineProps({
 	disabled: { type: Boolean, default: false },
 	readonly: { type: Boolean, default: false },
 	error: { type: String, default: '' },
-	info: { type: String, default: '' },
+	hint: { type: String, default: '' },
 	unit: { type: String, default: '' },
 	showReset: { type: Boolean, default: true }, // 삭제 버튼 표시 여부
 	actionLabel: { type: String, default: '' },  // 개별 버튼 라벨
@@ -142,6 +159,10 @@ input:not([type="checkbox"]):not([type="radio"])::placeholder {
 .form_input.focused {
 	border-color: var(--primary);
 	/* box-shadow: 0 0 0 .25rem rgba(13,110,253,.25); */
+}
+
+.is_error .form_input {
+	border-color: var(--danger);
 }
 
 /* form input */

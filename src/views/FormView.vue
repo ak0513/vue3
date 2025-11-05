@@ -8,14 +8,14 @@
 					<Input 
 						v-model="form.input1" 
 						id="input0" 
-						info="label없는 인풋 aria-label 추가해야함"
+						hint="label없는 인풋 aria-label 추가해야함"
 						placeholder="입력하세요" 
 					/>
 					<Input 
 						v-model="form.input1" 
 						id="input1" 
 						label="인풋" 
-						info="안내 텍스트가 노출됩니다."
+						hint="안내 텍스트가 노출됩니다."
 						placeholder="입력하세요" 
 					/>
 					<Input 
@@ -109,6 +109,50 @@
 				</Form>
 			</Box>
 
+			<h2 class="h_tit2">텍스트 에어리어</h2>
+			<Box>
+				<Form>
+					<Textarea
+						v-model="form.comment"
+						id="textarea1"
+						label="의견"
+						placeholder="의견을 입력하세요"
+						hint="최대 200자까지 입력 가능"
+						:maxlength="20"
+					/>
+
+
+					<!-- 에러 상태 -->
+					<Textarea
+						v-model="form.feedback"
+						id="textarea2"
+						label="오류"
+						error="필수 입력 항목입니다."
+						required
+					/>
+
+
+					<!-- Autosize 예시 -->
+					<Textarea
+						v-model="form.autosize"
+						id="textarea3"
+						label="자동 높이 조절"
+						autosize
+						placeholder="줄바꿈 시 자동으로 높이가 늘어납니다."
+					/>
+
+					<!-- Disabled 예시 -->
+					<Textarea
+						v-model="form.disabled"
+						label="비활성 상태"
+						disabled
+						hint="입력할 수 없습니다."
+						error="필수 입력 항목입니다."
+						:showCounter="false"
+					/>
+				</Form>
+			</Box>
+
 			<h2 class="h_tit2">폼 그룹</h2>
 			<Box>
 				<Form @submit="onSubmit">
@@ -161,7 +205,7 @@
 
 <script setup>
 import Box from '@/components/Box.vue'
-import { Form, FormGroup, Input, CheckRadio, CheckRadioGroup } from '@/components/form'
+import { Form, FormGroup, Input, CheckRadio, Textarea } from '@/components/form'
 
 import { ref, reactive } from 'vue'
 
